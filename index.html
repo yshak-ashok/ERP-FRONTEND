@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ERP</title>
+        <!-- Pristine.js -->
+        <script src="https://cdn.jsdelivr.net/npm/pristinejs@latest/dist/pristine.min.js"></script>
+        <!-- Tailwind CSS & Flowbite UI -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.x.x/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+        <!-- Alpine.js -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+    <body x-data="{ open: false }">
+        <!-- sidebar start -->
+        <button
+            data-drawer-target="default-sidebar"
+            data-drawer-toggle="default-sidebar"
+            aria-controls="default-sidebar"
+            type="button"
+            class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-400 dark:hover:bg-blue-700 dark:focus:ring-blue-600">
+            <span class="sr-only">Open sidebar</span>
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            </svg>
+        </button>
+
+        <aside
+            id="default-sidebar"
+            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+            aria-label="Sidebar">
+            <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                <ul class="space-y-2 font-medium">
+                    <li>
+                        <span class="ms-4 text-xl font-bold text-blue-700">ERP</span>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = false"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-blue-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = true"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="square"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = false"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 12v4m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 0v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V8m0 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Routes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = false"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = false"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-width="2"
+                                    d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Employees</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            @click="open = false"
+                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group">
+                            <svg
+                                class="w-[24px] h-[24px] text-gray-600 group-hover:text-white dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 whitespace-nowrap">Attendance</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- sidebar end -->
+
+        <div class="sm:ml-64">
+            <div class="rounded-lg">
+                <!-- nav bar start -->
+                <div class="grid grid-cols-1 mb-4">
+                    <div class="flex justify-end items-center h-10 space-x-4 rounded">
+                        <svg
+                            class="w-6 h-6 text-gray-600 hover:text-gray-700 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="none"
+                            viewBox="0 0 24 24">
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z" />
+                        </svg>
+                        <svg
+                            class="w-6 h-6 text-gray-600 hover:text-gray-700 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="none"
+                            viewBox="0 0 24 24">
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
+                        </svg>
+
+                        <svg
+                            class="w-7 h-7 text-gray-600 hover:text-gray-700 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="none"
+                            viewBox="0 0 24 24">
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                </div>
+                <!-- nav bar end -->
+
+                <!-- add user && user list-->
+                <div x-data="{ showForm: false } " x-show="open">
+                    <div class="grid grid-cols-2 gap-4 mb-4 border-y border-gray-300">
+                        <div x-show="!showForm" class="flex items-center justify-start rounded h-20">
+                            <h2 class="text-2xl font-semibold text-gray-800 px-5 border-r border-gray-300">Users</h2>
+                        </div>
+                        <div x-show="showForm" class="flex items-center justify-start rounded h-20">
+                            <button type="button" @click="showForm = false" class="h-full w-16 border-r border-gray-300">
+                                <svg
+                                    class="w-6 h-6 text-gray-300 dark:text-white"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="m15 19-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <h2 class="text-2xl font-semibold text-gray-800 px-5 border-r border-gray-300">Add User</h2>
+                        </div>
+
+                        <div class="flex items-center justify-end rounded h-20">
+                            <div x-show="!showForm">
+                                <button
+                                    type="button"
+                                    @click="showForm = true"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                    Add User
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 rounded">
+                        <!-- add user form start-->
+                        <form
+                            x-show="showForm"
+                            id="userForm"
+                            class="bg-white p-6 border border-gray-300 rounded-xl space-y-6 m-6"
+                            x-transition>
+                            <h2 class="text-xl font-semibold">Profile</h2>
+                            <p class="text-gray-500 text-xs">Manage your name, password, and account settings.</p>
+                            <div class="flex gap-5">
+                                <div class="w-1/3 mr-1">
+                                    <label for="firstName" class="block text-gray-600">Full Name</label>
+                                </div>
+                                <div class="w-1/3">
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        class="w-full border border-gray-300 p-1 rounded"
+                                        placeholder="First Name"
+                                        required />
+                                </div>
+                                <div class="w-1/3">
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        class="w-full border border-gray-300 p-1 rounded"
+                                        placeholder="Last Name"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-1/3">
+                                    <label for="role" class="block text-gray-600">Role</label>
+                                </div>
+                                <div class="w-2/3">
+                                    <select id="role" class="w-full border border-gray-300 p-1 rounded" required>
+                                        <option value="" disabled selected>Select Role</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="editor">User</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-1/3">
+                                    <label for="email" class="block text-gray-600">Email Address</label>
+                                </div>
+                                <div class="w-2/3">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        class="w-full border border-gray-300 p-1 rounded"
+                                        placeholder="Enter email"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-1/3">
+                                    <label for="mobile" class="block text-gray-600">Mobile</label>
+                                </div>
+                                <div class="w-2/3 flex">
+                                    <select id="countryCode" class="border border-gray-300 p-1 rounded-l">
+                                        <option value="+91">Ind (+91)</option>
+                                        <option value="+1">US (+1)</option>
+                                        <option value="+44">UK (+44)</option>
+                                    </select>
+                                    <input
+                                        type="text"
+                                        id="mobile"
+                                        class="border border-gray-300 p-1 rounded-r w-full"
+                                        placeholder="Mobile Number"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-1/3">
+                                    <label for="password" class="block text-gray-600">Password</label>
+                                </div>
+                                <div class="w-2/3">
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        class="w-full border border-gray-300 p-1 rounded mb-2"
+                                        placeholder="Enter password"
+                                        required />
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        class="w-full border border-gray-300 p-1 rounded"
+                                        placeholder="Confirm password"
+                                        required />
+                                </div>
+                            </div>
+                            >
+                            <div class="flex gap-4 items-center">
+                                <div class="w-1/3">
+                                    <label for="terms" class="block text-gray-600">Terms & Conditions</label>
+                                </div>
+                                <div class="w-2/3">
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="tc" value="" class="sr-only peer" unchecked />
+                                        <div
+                                            class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                            >Accept</span
+                                        >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button
+                                    type="submit"
+                                    id="submitBtn"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                        <!-- add user form end -->
+
+                        <!-- Users List start-->
+                        <section x-show="!showForm" class="mt-2 p-6">
+                            <div class="bg-white border border-gray-300 rounded-lg">
+                                <label
+                                    for="default-search"
+                                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                                    >Search</label
+                                >
+                                <div class="relative p-3 ml-6">
+                                    <div class="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none">
+                                        <svg
+                                            class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                    </div>
+                                    <input
+                                        type="search"
+                                        id="default-search"
+                                        class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Search"
+                                        required />
+                                </div>
+                                <table class="w-full table-auto bg-white">
+                                    <thead class="bg-gray-100 border-b border-gray-300">
+                                        <tr>
+                                            <th class="px-4 py-2 border-r border-gray-300">First Name</th>
+                                            <th class="px-4 py-2 border-r border-gray-300">Last Name</th>
+                                            <th class="px-4 py-2 border-r border-gray-300">Email</th>
+                                            <th class="px-4 py-2">Mobile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="userTable" class="table-body">
+                                        <!-- User rows -->
+                                    </tbody>
+                                </table>
+                                <div class="w-full h-10"></div>
+                            </div>
+                        </section>
+                        <!-- user list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main js file -->
+        <script src="main.js"></script>
+    </body>
+</html>
